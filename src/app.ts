@@ -9,3 +9,13 @@ const selectPrioridad = document.querySelector<HTMLSelectElement>('#select-prior
 const listaContenedor = document.querySelector<HTMLUListElement>('#lista-tareas')!;
 const loadingState = document.querySelector<HTMLDivElement>('#loading-state')!;
 const botonesFiltro = document.querySelectorAll<HTMLButtonElement>('.btn-filtro');
+
+async function inicializarApp(): Promise<void> {
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  loadingState.style.display = 'none';
+  pintarTareas();
+}
+
+function pintarTareas(): void {
+  listaContenedor.innerHTML = '';
+}
