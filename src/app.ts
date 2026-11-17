@@ -18,7 +18,7 @@ async function inicializarApp(): Promise<void> {
 
 function pintarTareas(): void {
   listaContenedor.innerHTML = '';
-  
+
  manager.getTareas().forEach(tarea => {
     const li = document.createElement('li');
     li.classList.add('item-tarea', tarea.prioridad);
@@ -40,3 +40,25 @@ function pintarTareas(): void {
     listaContenedor.appendChild(li);
   });
 }
+
+formulario.addEventListener('submit', event => {
+  event.preventDefault();
+  const titulo = inputTitulo.value.trim();
+  if (!titulo) return;
+
+  manager.agregar(titulo, selectPrioridad.value as Prioridad);
+  pintarTareas();
+  formulario.reset();
+});
+
+botonesFiltro.forEach(boton => {
+  boton.addEventListener('click', () => {
+    document.querySelector('.btn-filtro.active')?.classList.remove('active');
+    boton.classList.add('active');
+
+    manager.setFiltro(boton.dataset['filtro'] as Filtro);
+    pintarTareas();
+  });
+});
+
+inicializarApp();
