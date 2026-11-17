@@ -1,6 +1,6 @@
 import type { Tarea, Prioridad, Filtro } from '../Interfaces/tareaInterface.js';
 
-class TaskManager {
+export class TaskManager {
   private tareas: Tarea[] = [
     { id: 1, titulo: 'Aprender la sintaxis de ES6', prioridad: 'Alta', completada: true },
     { id: 2, titulo: 'Dominar la asincronía y Fetch', prioridad: 'Media', completada: false },
